@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import {connect, ConnectedProps} from "react-redux";
 import {RootState} from "../../redux/store";
 import {loadPosts, selectPostsArray} from '../../redux/posts'
+import PostItem from "../PostItem/PostItem";
 
 const mapStateToProps = (state: RootState) => ({
     posts: selectPostsArray(state)
@@ -29,13 +30,9 @@ const PostList: React.FC<Props> = ({posts, loadPosts}) => {
             PostList
             {posts.map(post => {
                 return (
-                    <div key={post.id}>
-                        <h2> {post.title}</h2>
-                        <p>{post.body}</p>
-                    </div>
+                   <PostItem key={post.id} post={post}/>
                 )
             })}
-
         </div>
     )
 }
