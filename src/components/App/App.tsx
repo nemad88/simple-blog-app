@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
 
-function App() {
+import PostList from "../PostList/PostList";
+
+const App: React.FC = () => {
   return (
-    <div className="App">
+    <div>
      <h1>App</h1>
+        <PostList/>
     </div>
   );
 }

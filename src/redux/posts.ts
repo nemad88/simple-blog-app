@@ -14,9 +14,6 @@ interface PostsState {
     posts: Post[]
 }
 
-const initialState: PostsState = {
-    posts: []
-}
 
 // LOAD POSTS INTERFACES
 
@@ -62,9 +59,21 @@ export const loadPosts = (): ThunkAction<void, RootState, undefined, LoadRequest
     }
 }
 
+// SELECTORS
+
+const selectPostState = (rootState: RootState) => rootState.posts;
+
+export const selectPostsArray = (rootState: RootState) => {
+    const state = selectPostState(rootState);
+    return state.posts;
+}
+
+// INITIAL STATE
+const initialState: PostsState = {
+    posts: []
+}
 
 // REDUCER
-
 const postReducer = (state: PostsState = initialState, action: | LoadRequestAction | LoadSuccessAction) => {
     switch (action.type) {
         case LOAD_SUCCESS:
