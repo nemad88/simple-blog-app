@@ -1,28 +1,14 @@
 import React, {useEffect} from 'react'
-import {connect, ConnectedProps} from "react-redux";
-import {RootState} from "../../redux/store";
-import {loadPosts, selectPostsArray} from '../../redux/posts'
+import {selectPublicPostsArray, loadPosts} from '../../redux/posts'
 import PostItem from "../PostItem/PostItem";
+import {useDispatch, useSelector} from "react-redux";
 
-const mapStateToProps = (state: RootState) => ({
-    posts: selectPostsArray(state)
-})
 
-const mapDispatchToProps = {
-    loadPosts
-}
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
-type PropsFromRedux = ConnectedProps<typeof connector>;
-
-interface Props extends PropsFromRedux {
-}
-
-const PostList: React.FC<Props> = ({posts, loadPosts}) => {
-
+const PostList: React.FC = () => {
+    const dispatch = useDispatch();
+    const posts = useSelector(selectPublicPostsArray);
     useEffect(() => {
-        loadPosts();
+        dispatch(loadPosts());
     }, []);
 
     return (
@@ -37,4 +23,4 @@ const PostList: React.FC<Props> = ({posts, loadPosts}) => {
     )
 }
 
-export default connector(PostList);
+export default PostList;

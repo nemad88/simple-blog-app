@@ -2,12 +2,14 @@ import {Action} from "redux";
 import {RootState} from './store';
 
 import {ThunkAction} from "redux-thunk";
+import {createSelector} from "reselect";
 
 export interface Post {
     userId: number;
     id: number;
     title: string;
     body: string;
+    draft: boolean;
 }
 
 interface PostsState {
@@ -47,6 +49,8 @@ export const loadPosts = (): ThunkAction<void, RootState, undefined, LoadRequest
         const response = await fetch(`http://localhost:3001/posts`);
         const posts: Post[] = await response.json();
 
+        console.log(posts)
+
         dispatch({
             type: LOAD_SUCCESS,
             payload: {posts}
@@ -61,12 +65,24 @@ export const loadPosts = (): ThunkAction<void, RootState, undefined, LoadRequest
 
 // SELECTORS
 
-const selectPostState = (rootState: RootState) => rootState.posts;
+export const selectPostsState = (state: RootState): PostsState => state.posts;
 
-export const selectPostsArray = (rootState: RootState) => {
-    const state = selectPostState(rootState);
-    return state.posts;
-}
+export const selectPublicPostsArray = createSelector(
+    selectPostsState,
+    postsState => postsState.posts.filter(post => !post.draft)
+)
+
+export const selectAllPostsArray = createSelector(
+    selectPostsState,
+    postsState => postsState.posts
+)
+
+export const selectPostById = (id: number) => {
+    return createSelector([selectPublicPostsArray], (posts) => {
+        return posts.find(post => post.id == id)
+    });
+};
+
 
 // INITIAL STATE
 const initialState: PostsState = {
