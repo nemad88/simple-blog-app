@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react'
-import {selectPublicPostsArray, loadPosts} from '../../redux/posts'
+import {loadPosts, selectPublicPostsArray} from '../../redux/posts'
 import PostItem from "../PostItem/PostItem";
 import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 
 const PostList: React.FC = () => {
@@ -16,7 +17,11 @@ const PostList: React.FC = () => {
             PostList
             {posts.map(post => {
                 return (
-                   <PostItem key={post.id} post={post}/>
+                    <div key={post.id} >
+                        <PostItem post={post}/>
+                        <Link to={`/posts/${post.id}`}>More</Link>
+                        <Link to={`/posts/${post.id}/edit`}>Edit</Link>
+                    </div>
                 )
             })}
         </div>

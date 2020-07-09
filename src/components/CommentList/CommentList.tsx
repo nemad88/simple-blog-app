@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {loadPosts, selectPostById} from "../../redux/posts";
 import {loadComments, selectCommentsByPostId} from "../../redux/comments";
 import CommentItem from "../CommentItem/CommentItem";
 

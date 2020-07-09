@@ -3,7 +3,6 @@ import {RootState} from "./store";
 import {ThunkAction} from "redux-thunk";
 import {createSelector} from "reselect";
 
-
 export interface Comment {
     postId: number;
     id: number;
@@ -15,7 +14,6 @@ export interface Comment {
 interface CommentsState {
     comments: Comment[]
 }
-
 
 // LOAD COMMENTS INTERFACES
 
@@ -43,7 +41,6 @@ export const loadComments = (): ThunkAction<void, RootState, undefined, LoadRequ
     dispatch({
         type: LOAD_REQUEST
     })
-
 
     try {
         const response = await fetch(`http://localhost:3001/comments`);

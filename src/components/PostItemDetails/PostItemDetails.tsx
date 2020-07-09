@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {Link, useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {loadPosts, selectPostById} from "../../redux/posts";
+import PostItem from "../PostItem/PostItem";
 import CommentList from "../CommentList/CommentList";
 
 const PostItemDetails: React.FC = () => {
@@ -17,14 +18,11 @@ const PostItemDetails: React.FC = () => {
     return (
         <>
             <div>POST DETAIL</div>
+            <Link to={`/posts/${slug}/edit`}>Edit</Link>
             {post ? (
-                <div>
-                    <h2> {post.title}</h2>
-                    <p>{post.body}</p>
-                </div>
+                <PostItem post={post}/>
             ) : <div>loading</div>}
             <Link to={'/'}>Back to post list</Link>
-
             <CommentList/>
         </>
     )

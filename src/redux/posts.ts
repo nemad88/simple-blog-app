@@ -9,7 +9,7 @@ export interface Post {
     id: number;
     title: string;
     body: string;
-    draft: boolean;
+    visibility: string;
 }
 
 interface PostsState {
@@ -63,13 +63,59 @@ export const loadPosts = (): ThunkAction<void, RootState, undefined, LoadRequest
     }
 }
 
+// UPDATE POST ACTION
+
+
+const UPDATE_REQUEST = 'posts/update_request';
+const UPDATE_SUCCESS = 'posts/update_success';
+const UPDATE_FAILURE = 'posts/update_failure';
+
+interface UpdateRequestAction extends Action<typeof UPDATE_REQUEST> {
+}
+
+interface UpdateSuccessAction extends Action<typeof UPDATE_SUCCESS> {
+    payload: { post: Post };
+}
+
+interface UpdateFailureAction extends Action<typeof UPDATE_FAILURE> {
+}
+
+export const updatePost = (
+    post: Post
+): ThunkAction<Promise<void>,
+    RootState,
+    undefined,
+    UpdateRequestAction | UpdateSuccessAction | UpdateFailureAction> => async dispatch => {
+    dispatch({
+        type: UPDATE_REQUEST
+    });
+
+    try {
+        const response = await fetch(`http://localhost:3001/posts/${post.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(post)
+        });
+        const updatedPost: Post = await response.json();
+
+        dispatch({type: UPDATE_SUCCESS, payload: {post: updatedPost}});
+    } catch (e) {
+        dispatch({
+            type: UPDATE_FAILURE
+        });
+    }
+};
+
+
 // SELECTORS
 
 export const selectPostsState = (state: RootState): PostsState => state.posts;
 
 export const selectPublicPostsArray = createSelector(
     selectPostsState,
-    postsState => postsState.posts.filter(post => !post.draft)
+    postsState => postsState.posts.filter(post => post.visibility === 'public')
 )
 
 export const selectAllPostsArray = createSelector(
@@ -78,8 +124,8 @@ export const selectAllPostsArray = createSelector(
 )
 
 export const selectPostById = (id: number) => {
-    return createSelector([selectPublicPostsArray], (posts) => {
-        return posts.find(post => post.id == id)
+    return createSelector([selectAllPostsArray], (posts) => {
+        return posts.find(post => post.id === id)
     });
 };
 
@@ -90,7 +136,7 @@ const initialState: PostsState = {
 }
 
 // REDUCER
-const postReducer = (state: PostsState = initialState, action: | LoadRequestAction | LoadSuccessAction) => {
+const postReducer = (state: PostsState = initialState, action: | LoadRequestAction | LoadSuccessAction | UpdateSuccessAction) => {
     switch (action.type) {
         case LOAD_SUCCESS:
             const {posts} = action.payload;
@@ -98,6 +144,10 @@ const postReducer = (state: PostsState = initialState, action: | LoadRequestActi
                 ...state,
                 posts
             }
+        case UPDATE_SUCCESS:
+            return {
+                ...state,
+            };
         default:
             return state;
     }
