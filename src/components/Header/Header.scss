@@ -1,23 +1,22 @@
 .header {
-  background: #0D1821;
+  background: #0d1821;
   height: 7vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
   font-size: 1.6rem;
-  -webkit-box-shadow: 9px 10px 20px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 9px 10px 20px 0px rgba(0,0,0,0.75);
-  box-shadow: 9px 10px 20px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 9px 10px 20px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 9px 10px 20px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 9px 10px 20px 0px rgba(0, 0, 0, 0.75);
 
-
-
-  a, button {
-    background: #0D1821;
+  a,
+  button {
+    background: #0d1821;
     text-decoration: none;
-    color: #F0F4EF;
+    color: #f0f4ef;
     font-weight: 700;
-    border: 2px solid #F0F4EF;
+    border: 2px solid #f0f4ef;
     padding: 1rem;
     border-radius: 5px;
     width: 100px;
@@ -30,12 +29,11 @@
 
   .logo {
     font-size: 2rem;
-    color: #F0F4EF;
+    color: #f0f4ef;
     font-weight: 700;
     border: none;
     &:hover {
       background: none;
     }
   }
-
 }

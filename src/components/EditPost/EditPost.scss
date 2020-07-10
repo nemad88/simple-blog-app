@@ -1,74 +1,84 @@
 .edit-post {
-    background: #62A87C;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 93vh;
-    padding: 20px 100px;
+  background: #62a87c;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 93vh;
+  padding: 20px 100px;
 }
 
 .button-box {
+  margin-top: 1rem;
+  display: flex;
 
-    margin-top: 1rem;
-    display: flex;
+  a,
+  button {
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.4rem;
+    border: 1px solid #0d1821;
+    background: #0d1821;
+    color: #d9d9d9;
+    padding: 1rem;
+    -webkit-box-shadow: 9px 10px 20px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 9px 10px 20px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 9px 10px 20px -8px rgba(0, 0, 0, 0.75);
+    margin-right: 1rem;
+    text-align: center;
+    width: 140px;
 
-
-    a, button {
-        color: black;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 1.4rem;
-        border: 1px solid #0D1821;
-        background: #0D1821;
-        color: #D9D9D9;
-        padding: 1rem;
-        -webkit-box-shadow: 9px 10px 20px -8px rgba(0,0,0,0.75);
-        -moz-box-shadow: 9px 10px 20px -8px rgba(0,0,0,0.75);
-        box-shadow: 9px 10px 20px -8px rgba(0,0,0,0.75);
-        margin-right: 1rem;
-        text-align: center;
-        width: 140px;
-
-        &:hover {
-            background: #D9D9D9;
-            color: #0D1821;
-            border: 1px solid #0D1821;
-            cursor: pointer;
-        }
-
+    &:hover {
+      background: #d9d9d9;
+      color: #0d1821;
+      border: 1px solid #0d1821;
+      cursor: pointer;
     }
+  }
 }
 
 .edit-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.edit-form-title, .edit-form-body  {
+.edit-form-title,
+.edit-form-body {
+  border: none;
+  background: #62a87c;
+  margin: 1rem;
+  padding: 1rem;
+  width: 60%;
+  text-align: center;
+  border: 1px solid #0d1821;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 2rem;
 
-    border: none;
-    background: #62A87C;
-    margin: 1rem;
-    padding: 1rem;
-    width: 60%;
-    text-align: center;
-    border: 1px solid #0D1821;
-    border-radius: 2px;
-    cursor: pointer;
-    font-size: 2rem;
-
-    &:focus {
-        outline: none;
-        background: #E7E7E7;
-    }
-
+  &:focus {
+    outline: none;
+    background: #e7e7e7;
+  }
 }
 
 .edit-form-body {
-    width: 60%;
-    height: 30rem;
-    font-size: 1.6rem;
-    text-align: justify;
+  width: 60%;
+  height: 30rem;
+  font-size: 1.6rem;
+  text-align: justify;
+}
+
+.custom-select {
+  background: #62a87c;
+  font-size: 1.6rem;
+  padding: 1rem;
+  cursor: pointer;
+
+  &:focus {
+    background: #e7e7e7;
+    outline: none;
+    boder: none;
+  }
 }
