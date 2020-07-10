@@ -12,7 +12,7 @@ const Login: React.FC = () => {
   const history = useHistory();
 
   const isValid = (): boolean => {
-    if (password !== dummyPassword && email !== dummyEmail) {
+    if (password !== dummyPassword || email !== dummyEmail) {
       setWarning("Not valid email or password");
       return false;
     }
