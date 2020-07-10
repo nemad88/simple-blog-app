@@ -59,7 +59,7 @@ export const loadComments = (): ThunkAction<
   } catch (e) {
     dispatch({
       type: LOAD_FAILURE,
-      error: "Failed to load posts",
+      error: "Failed to load comments",
     });
   }
 };
