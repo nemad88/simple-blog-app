@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {Link, useParams, useHistory } from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {loadPosts, selectPostById, updatePost} from "../../redux/posts";
-import './EditPost.css'
+import './EditPost.scss'
+import {selectIsLoggedIn} from "../../redux/auth";
 
 const EditPost: React.FC = () => {
 
@@ -16,13 +17,19 @@ const EditPost: React.FC = () => {
     const {slug} = useParams();
     const history = useHistory();
     const post = useSelector(selectPostById(parseInt(slug)));
+    const isLoggedIn = useSelector(selectIsLoggedIn);
 
     useEffect(() => {
+
+        if (!isLoggedIn){
+            history.push('/')
+        }
+
         dispatch(loadPosts());
     }, []);
 
-    useEffect(()=> {
-        if(post) {
+    useEffect(() => {
+        if (post) {
             setTitle(post.title)
             setVisibility(post.visibility);
             setBody(post.body);
@@ -30,11 +37,11 @@ const EditPost: React.FC = () => {
         }
     }, [post])
 
-    const onTitleChange = (event: React.ChangeEvent<HTMLInputElement>):void => {
+    const onTitleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         setTitle(event.target.value);
     }
 
-    const onBodyChange = (event: React.ChangeEvent<HTMLTextAreaElement>):void => {
+    const onBodyChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
         setBody(event.target.value);
     }
 
@@ -51,13 +58,14 @@ const EditPost: React.FC = () => {
     }
 
     return (
-        <div >
+        <div className="edit-post">
             <form className='edit-form' action="" onSubmit={onSavePost}>
                 <input id='title' className="edit-form-title" type="text" value={title} onChange={onTitleChange}/>
                 <textarea className="edit-form-body" value={body} onChange={onBodyChange}/>
-                <h1>Edit</h1>
-                <Link to={"/"}>Back to list</Link>
-                <button type="submit" value="save">SAVE</button>
+                <div className="button-box">
+                    <Link to={"/"}>Back to list</Link>
+                    <button type="submit" value="save">SAVE</button>
+                </div>
             </form>
 
         </div>

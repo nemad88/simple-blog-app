@@ -1,5 +1,6 @@
 import React from "react";
 import {Comment} from "../../redux/comments";
+import "./CommentItem.scss"
 
 interface Props {
     comment: Comment;
@@ -7,12 +8,9 @@ interface Props {
 
 const CommentItem: React.FC<Props> = ({comment}) => {
     return (
-        <div>
-            <div>
-                <h4>{comment.name}</h4>
-                <p>{comment.body}</p>
-                <div>{comment.postId}</div>
-            </div>
+        <div className='comment-item'>
+            <h3>{comment.name}</h3>
+            <p>{comment.body}</p>
         </div>
     )
 }

@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {loadComments, selectCommentsByPostId} from "../../redux/comments";
 import CommentItem from "../CommentItem/CommentItem";
+import './CommentList.scss'
 
 const CommentList: React.FC = () => {
 
@@ -15,7 +16,7 @@ const CommentList: React.FC = () => {
     }, []);
 
     return (
-        <div>
+        <div className="comment-list">
             <h2>Comments</h2>
             {comments ? (
                 comments.map(comment => (

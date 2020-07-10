@@ -2,13 +2,12 @@ import {Action} from "redux";
 import {RootState} from './store';
 import {createSelector} from "reselect";
 
-
+// AUTH STATE INTERFACE
 interface AuthState {
     loggedIn: boolean
 }
 
 // LOAD POSTS INTERFACES
-
 const LOGIN = 'auth/login';
 
 interface LoginAction extends Action<typeof LOGIN> {
@@ -20,8 +19,7 @@ interface LogoutAction extends Action<typeof LOGOUT> {
 
 }
 
-
-// LOGIN ACTION
+// LOGIN/LOGOUT ACTION
 export const login = (): LoginAction => ({
     type: LOGIN
 })
