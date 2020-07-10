@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render PostItem component 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+      "subscription": Subscription {
+        "handleChangeWrapper": [Function],
+        "listeners": Object {
+          "notify": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": null,
+      },
+    }
+  }
+>
+  <PostItem
+    post={
+      Object {
+        "body": "et fugit eligendi deleniti quidem qui sint nihil autem m accusamus fugiat dicta voluptatem rerum ut voluptate autem voluptatem repellendus aspernatur dolorem in doloribus at sed quis culpa deserunt consectetur qui praesen
+doloribus at sed quis culpa deserunt consectetur qui praesentium accusamus fugiat dicta voluptatem rerum ut voluptate autem voluptatem repellendus aspernatur dolorem in
+doloribus at sed quis culpa deserunt uidem qui sint nihil autem m accusamus fugiat dicta voluptatem rerum ut voluptate autem voluptatem repellendus aspernatur dolorem in doloribus at sed quis culpa deserunt consectetur qui praesen consectetur qui praesen praesentium accusamus fugiat dicta voluptatem rerum ut voluptate autem voluptatem repellendus aspernatur dolorem in
+doloribus at sed quis culpa deserunt consectetur qui praesen",
+        "id": 2,
+        "title": "qui est esse",
+        "userId": 1,
+        "visibility": "draft",
+      }
+    }
+  />
+</ContextProvider>
+`;

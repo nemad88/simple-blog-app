@@ -56,6 +56,7 @@ const EditPost: React.FC = () => {
         userId: userId,
       })
     );
+    dispatch(loadPosts());
     history.push("/");
   };
 

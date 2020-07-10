@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render App component 1`] = `
+<Fragment>
+  <Header />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/posts/:slug"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/posts/:slug/edit"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/login"
+    />
+    <Route
+      path="*"
+    >
+      <Redirect
+        to="/"
+      />
+    </Route>
+  </Switch>
+</Fragment>
+`;

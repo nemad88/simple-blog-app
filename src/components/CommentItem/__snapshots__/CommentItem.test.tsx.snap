@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render CommentItem component 1`] = `
+<div
+  className="comment-item"
+>
+  <h3>
+    id labore ex et quam laborum
+  </h3>
+  <p>
+    laudantium enim quasi est quidem magnam voluptate ipsam eos
+tempora quo necessitatibus
+dolor quam autem quasi
+reiciendis et nam sapiente accusantium
+  </p>
+</div>
+`;

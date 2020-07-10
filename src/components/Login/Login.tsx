@@ -34,16 +34,18 @@ const Login: React.FC = () => {
   return (
     <div className="login-box">
       <form className="login-form" onSubmit={onLogin}>
-        <label>Email:</label>
+        <label htmlFor="email">Email:</label>
 
         <input
+          id="email"
           onChange={(event) => setEmail(event.target.value)}
           onFocusCapture={() => setWarning("")}
           value={email}
           type="email"
         />
-        <label>Password:</label>
+        <label htmlFor="password">Password:</label>
         <input
+          id="password"
           onChange={(event) => setPassword(event.target.value)}
           onFocusCapture={() => setWarning("")}
           value={password}

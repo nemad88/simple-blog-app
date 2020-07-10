@@ -36,7 +36,7 @@ export const selectIsLoggedIn = createSelector(
 
 // INITIAL STATE
 const initialState: AuthState = {
-  loggedIn: true,
+  loggedIn: false,
 };
 
 // REDUCER
