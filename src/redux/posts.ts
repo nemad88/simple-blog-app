@@ -19,19 +19,15 @@ interface PostsState {
 // LOAD POSTS INTERFACES
 
 const LOAD_REQUEST = "posts/load_request";
+const LOAD_SUCCESS = "posts/load_success";
+const LOAD_FAILURE = "posts/load_failure";
 
 interface LoadRequestAction extends Action<typeof LOAD_REQUEST> {}
-
-const LOAD_SUCCESS = "posts/load_success";
-
 interface LoadSuccessAction extends Action<typeof LOAD_SUCCESS> {
   payload: {
     posts: Post[];
   };
 }
-
-const LOAD_FAILURE = "posts/load_failure";
-
 interface LoadFailureAction extends Action<typeof LOAD_FAILURE> {
   error: string;
 }
@@ -50,9 +46,6 @@ export const loadPosts = (): ThunkAction<
   try {
     const response = await fetch(`http://localhost:3001/posts`);
     const posts: Post[] = await response.json();
-
-    console.log(posts);
-
     dispatch({
       type: LOAD_SUCCESS,
       payload: { posts },
@@ -72,11 +65,9 @@ const UPDATE_SUCCESS = "posts/update_success";
 const UPDATE_FAILURE = "posts/update_failure";
 
 interface UpdateRequestAction extends Action<typeof UPDATE_REQUEST> {}
-
 interface UpdateSuccessAction extends Action<typeof UPDATE_SUCCESS> {
   payload: { post: Post };
 }
-
 interface UpdateFailureAction extends Action<typeof UPDATE_FAILURE> {}
 
 export const updatePost = (

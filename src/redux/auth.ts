@@ -9,11 +9,9 @@ interface AuthState {
 
 // LOAD POSTS INTERFACES
 const LOGIN = "auth/login";
-
-interface LoginAction extends Action<typeof LOGIN> {}
-
 const LOGOUT = "auth/logout";
 
+interface LoginAction extends Action<typeof LOGIN> {}
 interface LogoutAction extends Action<typeof LOGOUT> {}
 
 // LOGIN/LOGOUT ACTION

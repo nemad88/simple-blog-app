@@ -18,19 +18,15 @@ interface CommentsState {
 // LOAD COMMENTS INTERFACES
 
 const LOAD_REQUEST = "comments/load_request";
+const LOAD_SUCCESS = "comments/load_success";
+const LOAD_FAILURE = "comments/load_failure";
 
 interface LoadRequestAction extends Action<typeof LOAD_REQUEST> {}
-
-const LOAD_SUCCESS = "comments/load_success";
-
 interface LoadSuccessAction extends Action<typeof LOAD_SUCCESS> {
   payload: {
     comments: Comment[];
   };
 }
-
-const LOAD_FAILURE = "comments/load_failure";
-
 interface LoadFailureAction extends Action<typeof LOAD_FAILURE> {
   error: string;
 }
